@@ -1,5 +1,3 @@
-require 'formula'
-
 class UniversalCtags < Formula
   # TODO: Uncomment these lines when the repo is moved.
   # homepage 'https://github.com/universal-ctags/ctags'
