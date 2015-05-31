@@ -1,11 +1,8 @@
 # Homebrew Tap for Universal Ctags
 
 Given the lack of activity on the official Exuberant Ctags source,
-it has been forked and renamed to Universal Ctags. Universal Ctags
-will eventually live in the [universal-ctags](https://github.com/universal-ctags)
-Github organization.
-
-For now, it still lives at https://github.com/fishman/ctags.
+it has been forked and renamed to Universal Ctags and can be found
+at https://github.com/universal-ctags/ctags.
 
 ## Usage
 

@@ -1,10 +1,6 @@
 class UniversalCtags < Formula
-  # TODO: Uncomment these lines when the repo is moved.
-  # homepage 'https://github.com/universal-ctags/ctags'
-  # head 'https://github.com/universal-ctags/ctags.git'
-  # TODO: Delete the next two lines when the repo is moved.
-  homepage 'https://github.com/fishman/ctags'
-  head 'https://github.com/fishman/ctags.git'
+  homepage 'https://github.com/universal-ctags/ctags'
+  head 'https://github.com/universal-ctags/ctags.git'
   depends_on :autoconf
   conflicts_with 'ctags', :because => 'this formula installs the same executable as the ctags formula'
 
