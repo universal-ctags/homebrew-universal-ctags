@@ -7,15 +7,11 @@ at https://github.com/universal-ctags/ctags.
 ## Usage
 
 ```
-brew tap cweagans/universal-ctags
+brew tap universal-ctags/universal-ctags
 brew install --HEAD universal-ctags
 ```
 
 ## Future
 
-Hopefully, this tap won't exist under my username for too long. One of two
-things should happen (in order of preference):
-
-1. The formula should be merged into the official Homebrew formulae; or
-2. The tap should be moved into the universal-ctags organization.
-
+When Universal Ctags has a tagged release, this formula should be moved
+to the official Homebrew repository. This repo should then be deleted.
