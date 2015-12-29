@@ -1,17 +1,24 @@
 class UniversalCtags < Formula
   homepage 'https://github.com/universal-ctags/ctags'
   head 'https://github.com/universal-ctags/ctags.git'
+
+  option "without-iconv", "Enable multibyte character encoding"
+  option "without-macro-patterns", "Disable patterns as default method to locate macros and instead use line numbers"
+
   depends_on :autoconf
+  depends_on :automake
+
   conflicts_with 'ctags', :because => 'this formula installs the same executable as the ctags formula'
 
   def install
-    system "autoheader"
-    system "autoconf"
-    system "./configure",
-      "--prefix=#{prefix}",
-      "--enable-macro-patterns",
-      "--mandir=#{man}",
-      "--with-readlib"
+    args = %W[
+      --prefix=#{prefix}
+    ]
+
+    args << "--enable-iconv" if build.with? "iconv"
+    args << "--enable-macro-patterns" if build.with? "macro-patterns"
+    system "./autogen.sh"
+    system "./configure", *args
     system "make install"
   end
 
