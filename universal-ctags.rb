@@ -2,16 +2,13 @@ class UniversalCtags < Formula
   homepage 'https://github.com/universal-ctags/ctags'
   head 'https://github.com/universal-ctags/ctags.git'
   depends_on :autoconf
+  depends_on :automake
   conflicts_with 'ctags', :because => 'this formula installs the same executable as the ctags formula'
 
   def install
-    system "autoheader"
-    system "autoconf"
-    system "./configure",
-      "--prefix=#{prefix}",
-      "--enable-macro-patterns",
-      "--mandir=#{man}",
-      "--with-readlib"
+    system "./autogen.sh"
+    system "./configure", "--prefix=#{prefix}"
+    system "make"
     system "make install"
   end
 
