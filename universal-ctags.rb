@@ -3,6 +3,7 @@ class UniversalCtags < Formula
   head 'https://github.com/universal-ctags/ctags.git'
   depends_on :autoconf
   depends_on :automake
+  depends_on 'pkg-config'
   conflicts_with 'ctags', :because => 'this formula installs the same executable as the ctags formula'
 
   def install
