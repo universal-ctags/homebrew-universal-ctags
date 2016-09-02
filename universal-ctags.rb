@@ -4,6 +4,7 @@ class UniversalCtags < Formula
   depends_on "autoconf"
   depends_on "automake"
   depends_on 'pkg-config'
+  depends_on "jansson" => :optional
   conflicts_with 'ctags', :because => 'this formula installs the same executable as the ctags formula'
 
   def install
