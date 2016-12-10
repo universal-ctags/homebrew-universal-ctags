@@ -1,10 +1,11 @@
 class UniversalCtags < Formula
-  homepage 'https://github.com/universal-ctags/ctags'
-  head 'https://github.com/universal-ctags/ctags.git'
-  depends_on "autoconf"
-  depends_on "automake"
-  depends_on 'pkg-config'
-  conflicts_with 'ctags', :because => 'this formula installs the same executable as the ctags formula'
+  desc "Maintained ctags implementation"
+  homepage "https://github.com/universal-ctags/ctags"
+  head "https://github.com/universal-ctags/ctags.git"
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+  depends_on "pkg-config" => :build
+  conflicts_with "ctags", :because => "this formula installs the same executable as the ctags formula"
 
   def install
     system "./autogen.sh"
