@@ -8,7 +8,7 @@ class UniversalCtags < Formula
 
   def install
     system "./autogen.sh"
-    system "./configure", "--prefix=#{prefix}"
+    system "./configure", "--prefix=#{prefix}", "--enable-iconv"
     system "make"
     system "make", "install"
   end
