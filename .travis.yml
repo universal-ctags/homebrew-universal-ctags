@@ -1,0 +1,30 @@
+# TravisCI
+#
+# @url: https://github.com/caskroom/homebrew-cask/blob/master/.travis.yml
+# @url: http://docs.travis-ci.com/user/languages/objective-c/
+#
+language: ruby
+
+sudo: false
+
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode8.3
+      rvm: system
+  fast_finish: true
+
+before_install:
+  - brew update || brew update
+
+script:
+  - brew tap universal-ctags/universal-ctags
+  - brew install --HEAD universal-ctags
+
+after_success:
+  - ctags --help
+
+notifications:
+  email: false
+
+# vim:fdl=0:sts=2:sw=2:ts=2
