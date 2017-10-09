@@ -17,12 +17,12 @@ matrix:
 before_install:
   - brew update || brew update
 
-script:
-  - brew tap universal-ctags/universal-ctags
-  - brew install --HEAD universal-ctags
+install:
+  - brew install --HEAD ./universal-ctags.rb
 
-after_success:
-  - ctags --help
+script:
+  - ctags --version
+  - brew test universal-ctags
 
 notifications:
   email: false
