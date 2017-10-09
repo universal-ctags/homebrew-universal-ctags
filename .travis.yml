@@ -22,6 +22,7 @@ install:
 
 script:
   - ctags --version
+  - man -P cat ctags
   - brew test universal-ctags
 
 notifications:
