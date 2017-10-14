@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/universal-ctags/homebrew-universal-ctags.svg?branch=master)](https://travis-ci.org/universal-ctags/homebrew-universal-ctags)
+[![GitHub issues](https://img.shields.io/github/issues/universal-ctags/homebrew-universal-ctags.svg?style=flat-square)](https://github.com/universal-ctags/homebrew-universal-ctags/issues)
+[![RTD build status](https://readthedocs.org/projects/ctags/badge)](http://docs.ctags.io)
+[![license](https://img.shields.io/github/license/universal-ctags/homebrew-universal-ctags.svg?style=flat-square)](https://raw.githubusercontent.com/universal-ctags/homebrew-universal-ctags/master/COPYING)
+
 # Homebrew Tap for Universal Ctags
 
 Given the lack of activity on the official Exuberant Ctags source,
@@ -7,8 +12,7 @@ at https://github.com/universal-ctags/ctags.
 ## Usage
 
 ```
-brew tap universal-ctags/universal-ctags
-brew install --HEAD universal-ctags
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 ```
 
 ## Future
