@@ -18,7 +18,7 @@ before_install:
   - brew update || brew update
 
 install:
-  - brew install --HEAD ./universal-ctags.rb
+  - brew install --HEAD --with-jansson --with-libyaml ./universal-ctags.rb
 
 script:
   - ctags --version
