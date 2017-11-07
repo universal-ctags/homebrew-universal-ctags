@@ -2,6 +2,7 @@ class UniversalCtags < Formula
   desc "Maintained ctags implementation"
   homepage "https://github.com/universal-ctags/ctags"
   head "https://github.com/universal-ctags/ctags.git"
+  option "without-xml", "Compile without libxml2"
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "pkg-config" => :build
@@ -22,8 +23,11 @@ class UniversalCtags < Formula
       system "python", *Language::Python.setup_install_args(libexec/"vendor")
     end
 
+    opts = []
+    opts << "--disable-xml" if build.without? "xml"
+
     system "./autogen.sh"
-    system "./configure", "--prefix=#{prefix}"
+    system "./configure", "--prefix=#{prefix}", *opts
     system "make"
     system "make", "install"
   end
