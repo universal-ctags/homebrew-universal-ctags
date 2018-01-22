@@ -33,7 +33,7 @@ class UniversalCtags < Formula
   end
 
   def caveats
-    <<-EOS.undent
+    <<~EOS
       Under some circumstances, emacs and ctags can conflict. By default,
       emacs provides an executable `ctags` that would conflict with the
       executable of the same name that ctags provides. To prevent this,
@@ -46,7 +46,7 @@ class UniversalCtags < Formula
   end
 
   test do
-    (testpath/"test.c").write <<-EOS.undent
+    (testpath/"test.c").write <<~EOS
       #include <stdio.h>
       #include <stdlib.h>
 
