@@ -18,4 +18,6 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 ## Future
 
 When Universal Ctags has a tagged release, this formula should be moved
-to the official Homebrew repository. This repo should then be deleted.
+to the official Homebrew repository. The formula should then be deleted
+from this repo and a `tap_migrations.json` file be added to ensure an
+automatic transition for existing users of the formula.
