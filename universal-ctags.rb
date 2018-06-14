@@ -3,6 +3,7 @@ class UniversalCtags < Formula
   homepage "https://github.com/universal-ctags/ctags"
   head "https://github.com/universal-ctags/ctags.git"
   option "without-xml", "Compile without libxml2"
+  option "without-doc", "Compile without man pages"
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "pkg-config" => :build
@@ -16,11 +17,13 @@ class UniversalCtags < Formula
   end
 
   def install
-    ENV.prepend_create_path "PYTHONPATH", libexec/"vendor/lib/python2.7/site-packages"
-    ENV.prepend_path "PATH", libexec/"vendor/bin"
+    if !build.without? "doc"
+      ENV.prepend_create_path "PYTHONPATH", libexec/"vendor/lib/python2.7/site-packages"
+      ENV.prepend_path "PATH", libexec/"vendor/bin"
 
-    resource("docutils").stage do
-      system "python", *Language::Python.setup_install_args(libexec/"vendor")
+      resource("docutils").stage do
+        system "python", *Language::Python.setup_install_args(libexec/"vendor")
+      end
     end
 
     opts = []
