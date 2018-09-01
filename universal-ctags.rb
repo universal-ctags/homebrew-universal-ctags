@@ -31,7 +31,16 @@ class UniversalCtags < Formula
 
     system "./autogen.sh"
     system "./configure", "--prefix=#{prefix}", *opts
-    system "make"
+    #
+    # Following codes for debugging #23
+    #
+    # debug: check the execution bit for ./install.sh
+    system "ls", "-l"
+    # debug: check the ./install.sh can be run
+    system "./install-sh", "--help"
+    # debug: dump ./install-sh
+    system "cat", "./install-sh"
+    system "make", "-d", "V=1"
     system "make", "install"
   end
 
