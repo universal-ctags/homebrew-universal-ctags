@@ -1,7 +1,11 @@
 # TravisCI
 #
 # @url: https://github.com/caskroom/homebrew-cask/blob/master/.travis.yml
-# @url: http://docs.travis-ci.com/user/languages/objective-c/
+# @url: https://docs.travis-ci.com/user/languages/objective-c/
+# @url: https://docs.travis-ci.com/user/multi-os/
+# @url: https://docs.travis-ci.com/user/reference/windows/
+# @url: https://docs.brew.sh/Installation
+# @url: https://docs.brew.sh/Homebrew-on-Linux
 #
 language: ruby
 
@@ -12,7 +16,19 @@ matrix:
     - os: osx
       osx_image: xcode11.2
       rvm: system
+    - os: linux
+      dist: trusty
   fast_finish: true
+
+before_install:
+  - |
+    if [[ $TRAVIS_OS_NAME != 'osx' ]]; then
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+      test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+      test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+      test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+      echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+    fi
 
 install:
   - brew install --HEAD --with-jansson --with-libyaml ./universal-ctags.rb
