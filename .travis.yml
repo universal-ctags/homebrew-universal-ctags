@@ -10,12 +10,9 @@ sudo: false
 matrix:
   include:
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode11.2
       rvm: system
   fast_finish: true
-
-before_install:
-  - brew update || brew update
 
 install:
   - brew install --HEAD --with-jansson --with-libyaml ./universal-ctags.rb

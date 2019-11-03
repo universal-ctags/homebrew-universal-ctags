@@ -3,29 +3,15 @@ class UniversalCtags < Formula
   homepage "https://github.com/universal-ctags/ctags"
   head "https://github.com/universal-ctags/ctags.git"
   option "without-xml", "Compile without libxml2"
-  option "without-doc", "Compile without man pages"
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "pkg-config" => :build
+  depends_on "docutils" => :build
   depends_on "jansson" => :optional
   depends_on "libyaml" => :optional
   conflicts_with "ctags", :because => "this formula installs the same executable as the ctags formula"
 
-  resource "docutils" do
-    url "https://files.pythonhosted.org/packages/84/f4/5771e41fdf52aabebbadecc9381d11dea0fa34e4759b4071244fa094804c/docutils-0.14.tar.gz"
-    sha256 "51e64ef2ebfb29cae1faa133b3710143496eca21c530f3f71424d77687764274"
-  end
-
   def install
-    if !build.without? "doc"
-      ENV.prepend_create_path "PYTHONPATH", libexec/"vendor/lib/python2.7/site-packages"
-      ENV.prepend_path "PATH", libexec/"vendor/bin"
-
-      resource("docutils").stage do
-        system "python", *Language::Python.setup_install_args(libexec/"vendor")
-      end
-    end
-
     opts = []
     opts << "--disable-xml" if build.without? "xml"
 
