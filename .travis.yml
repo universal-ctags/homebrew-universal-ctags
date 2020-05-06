@@ -14,8 +14,7 @@ sudo: false
 matrix:
   include:
     - os: osx
-      osx_image: xcode11.2
-      rvm: system
+      osx_image: xcode11.4
     - os: linux
       dist: trusty
   fast_finish: true
@@ -23,11 +22,15 @@ matrix:
 before_install:
   - |
     if [[ $TRAVIS_OS_NAME != 'osx' ]]; then
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
       test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
       test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
       test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
       echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+
+      #ErrorFix: Install Perl
+      # @see https://travis-ci.org/github/KazuakiM/homebrew-universal-ctags/jobs/683777821
+      brew install perl -s
     fi
 
 install:
