@@ -14,7 +14,7 @@ class UniversalCtags < Formula
   def install
     opts = []
     opts << "--disable-xml" if build.without? "xml"
-
+    opts << "PYTHON_EXTRA_LDFLAGS=#{`#{Formula["python@3.8"].opt_bin}/python3-config --ldflags`.chomp}" if OS.linux?
     system "./autogen.sh"
     system "./configure", "--prefix=#{prefix}", *opts
     system "make"
