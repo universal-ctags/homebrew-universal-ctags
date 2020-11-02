@@ -1,0 +1,26 @@
+# @see https://github.com/Homebrew/homebrew-core/blob/master/.github/workflows/autopublish.yml
+# @see https://github.com/Homebrew/homebrew-core/blob/a107cf70236ce2ac14d7bc8e347f51e32e8907ad/.github/workflows/autopublish.yml
+name: Publish and commit bottles on schedule
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Once every hour
+    - cron: '5 * * * *'
+
+env:
+  HOMEBREW_FORCE_HOMEBREW_ON_LINUX: 1
+
+jobs:
+  autopublish:
+    if: github.repository == 'KazuakiM/homebrew-universal-ctags'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Run automerge
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{secrets.HOMEBREW_GITHUB_API_TOKEN}}
+        run: brew pr-automerge --verbose --publish --autosquash
