@@ -1,6 +1,13 @@
+# typed: false
+# frozen_string_literal: true
+
+# UniversalCtags
 class UniversalCtags < Formula
   desc "Maintained ctags implementation"
   homepage "https://github.com/universal-ctags/ctags"
+  url "https://github.com/universal-ctags/ctags/archive/p5.9.20201018.0.tar.gz"
+  sha256 "1ec29b2f2fb6eced99181931c3ed28dfe19f56466a43835c783af45dbf7b9e0f"
+  license "GPL-2.0-or-later"
   head "https://github.com/universal-ctags/ctags.git"
   depends_on "autoconf" => :build
   depends_on "automake" => :build
