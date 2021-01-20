@@ -5,8 +5,8 @@ class UniversalCtags < Formula
   option "without-xml", "Compile without libxml2"
   depends_on "autoconf" => :build
   depends_on "automake" => :build
+  depends_on "docutils" => [:build, :optional]
   depends_on "pkg-config" => :build
-  depends_on "docutils" => :optional
   depends_on "jansson" => :optional
   depends_on "libyaml" => :optional
   conflicts_with "ctags", :because => "this formula installs the same executable as the ctags formula"
