@@ -32,7 +32,7 @@ before_install:
     fi
 
 install:
-  - brew install --HEAD --debug --verbose --with-docutils --with-jansson --with-libyaml ./universal-ctags.rb
+  - brew install --HEAD --debug --verbose ./universal-ctags.rb
 
 script:
   - ctags --version
