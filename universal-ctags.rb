@@ -8,6 +8,7 @@ class UniversalCtags < Formula
   depends_on "pkg-config" => :build
   depends_on "jansson"
   depends_on "libyaml"
+  depends_on "pcre2"
   uses_from_macos "libxml2"
   conflicts_with "ctags", because: "this formula installs the same executable as the ctags formula"
 
